@@ -1,6 +1,54 @@
 .browser-reminder {
+    max-width: 500px;
+    margin: 0 auto;
+    
+    .br-wrapper-container {
+        margin-top: 15px;
+    }
+    
+    .br-add-new-item {
+        position: relative;
+        
+        &:after {
+            content: "Press ↵ so submit";
+            position: absolute;
+            right: 6px;
+            top: 6px;
+            padding: 1px 5px;
+            background-color: lightgreen;
+            color: #525252;
+            border-radius: 4px;
+        }
+    }
+    
+    .br-add-new-input {
+        width: 100%;
+        padding: 5px 10px;
+        box-sizing: border-box;
+        font-size: 18px;
+        line-height: 1;
+        border: 1px lightgrey solid;
+    }
     
     .calendar-item {
-        border: 1px solid red;
+        padding: 5px 10px;
+        background-color: lightsteelblue;
+        
+        .calendar-item-time {
+            float: right;
+            font-size: 26px;
+        }
+        
+        .calendar-item-title {
+            margin: 5px 0 0;
+            padding: 0;
+        }
+        
+        &:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
     }
+    
 }

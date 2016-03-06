@@ -1,12 +1,12 @@
 'use strict';
 
 import parsePhrase from './requester';
+import getTemplate from './itemTemplate';
 
-let appContainer = document.querySelector('#app');
-const template = `$`; 
+let appContainer = document.querySelector('#app .br-wrapper-container');
 
 parsePhrase('Call a wife this evening')
     .then(function(data) {
         let response = JSON.parse(data);
-        appContainer.innerHTML = `<span class="calendar-item">${response.hour}:${response.minute}</span><span>${response.body}</span>`;
+        appContainer.innerHTML = getTemplate(response);
     });
