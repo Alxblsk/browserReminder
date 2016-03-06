@@ -3,10 +3,18 @@
 import parsePhrase from './requester';
 import getTemplate from './itemTemplate';
 
-let appContainer = document.querySelector('#app .br-wrapper-container');
+let appContainer = document.querySelector('#app');
+let itemContaier = document.querySelector('#itemsContainer');
+let searchInput  = document.querySelector('#searchInput');
 
-parsePhrase('Call a wife this evening')
-    .then(function(data) {
-        let response = JSON.parse(data);
-        appContainer.innerHTML = getTemplate(response);
-    });
+searchInput.addEventListener('keypress', event => {
+    if (event.which == '13') {
+        parsePhrase(event.target.value)
+            .then(function(data) {
+            let response = JSON.parse(data);
+            itemContaier.innerHTML += getTemplate(response);
+            
+            event.target.value = '';
+        });
+    }
+})

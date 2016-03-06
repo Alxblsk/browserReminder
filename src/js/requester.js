@@ -13,7 +13,6 @@ export default function parseReminder(phrase) {
 
     return new Promise(function(resolve, reject) {
         xhr.onreadystatechange = function(event) {
-            console.log('onreadystatechange', event);
             if (xhr.readyState === 4) {
                 if (xhr.status >= 200 && xhr.status < 400) {
                      resolve(xhr.responseText);
