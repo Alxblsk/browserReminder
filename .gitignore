@@ -32,6 +32,12 @@ node_modules
 # Optional REPL history
 .node_repl_history
 
+#Webstorm files
+.idea
+
+#Microsoft Visual Studio Code
+.vscode
+
 #API key file
 src/js/apiKey.js
 
