@@ -3,7 +3,7 @@
 import { API_KEY } from './apiKey';
 const URL_TO_API = 'https://maciejgorny-reminderdrop-v1.p.mashape.com';
 
-export default function parseReminder(phrase) {
+export default function requestReminder(phrase) {
     let xhr = new XMLHttpRequest();
 
     xhr.open('GET', `${URL_TO_API}/${phrase}/GMT+03:00`, true);
