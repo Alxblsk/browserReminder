@@ -6,10 +6,9 @@ const URL_TO_API = 'https://maciejgorny-reminderdrop-v1.p.mashape.com';
 export default function requestReminder(phrase) {
     let xhr = new XMLHttpRequest();
 
-    xhr.open('GET', `${URL_TO_API}/${phrase}/GMT+03:00`, true);
+    xhr.open('GET', `${URL_TO_API}/${phrase}/Europe/Minsk`, true);
     xhr.setRequestHeader('X-Mashape-Key', API_KEY);
     xhr.setRequestHeader('Accept', 'application/json');
-
 
     return new Promise(function(resolve, reject) {
         xhr.onreadystatechange = function(event) {

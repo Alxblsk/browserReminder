@@ -1,31 +1,29 @@
-/**
- * Updates minutes length to 2 symbols
- */
-function _timePreparation(data) {
-    data.minute = data.minute + '';
-    
-    if (data.minute.length === 1) {
-        data.minute += '0';
-    }
-    
-    return data;
+const TIME_PERIOD = {
+    PAST: 'past',
+    CURRENT: 'current',    
+    FUTURE: 'future'
 }
 
 /**
- * Does all data preparations
+ * @param {number} utc Action timestamp
  */
-function _prepare(data) {
-    return  _timePreparation(data);
+function detectTimePeriod(utc) {
+    let now = Date.now();  
+    return now < utc ? TIME_PERIOD.FUTURE : TIME_PERIOD.PAST;
 }
 
 /**
  * Returns a prepared template
  */
-export default function getTemplate(data) {
-    let response = _prepare(data);
+export default function getTemplate(response) {
+    response.period = detectTimePeriod(+response.utcdate) || TIME_PERIOD.FUTURE;
+    
     return `
-        <div class="calendar-item">
-            <div class="calendar-item-time">${response.hour}:${response.minute}</div>
+        <div class="calendar-item ${response.period ? 'calendar-item-' + response.period : ''}">
+            <div class="calendar-item-time">
+                ${response.day}/${response.month}/${response.year}
+                ${response.hour}:${(response.minute.length === 1 ? '0' : '') + response.minute}
+            </div>
             <p class="calendar-item-title">${response.body}</p>
         </div>
     `;

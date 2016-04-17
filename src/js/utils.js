@@ -8,6 +8,12 @@ export function parseResponse(data) {
 }
 
 
+export function sortResponse(data) {
+    return data.sort(function(first, second) {
+        return second.utcdate - first.utcdate;
+    })
+}
+
 /**
  * Returns an onject from LocalStorage
  */
@@ -25,5 +31,7 @@ export function setToLocalstorage(item) {
     items.push(item);
     
     let stringToSet = JSON.stringify(items);    
-    return window.localStorage.setItem('browserReminderItems', stringToSet);
+    window.localStorage.setItem('browserReminderItems', stringToSet);
+    
+    return items;
 }
